@@ -10,7 +10,7 @@ try
     
     string sql = @"SELECT e.emp_no, e.first_name, e.last_name, SUM(salary), MIN(s.from_date), MAX(s.to_date), eh.end_date FROM salaries AS s 
     JOIN (SELECT emp_no, MAX(eh.to_date) AS end_date FROM dept_emp AS eh GROUP BY eh.emp_no) AS eh ON eh.emp_no = s.emp_no
-    JOIN employees as e ON e.emp_no = s.emp_no   
+    JOIN employees AS e ON e.emp_no = s.emp_no   
     WHERE eh.end_date < s.to_date
     GROUP BY e.emp_no;";
     MySqlCommand cmd = new MySqlCommand(sql, connection);
